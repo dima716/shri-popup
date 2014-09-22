@@ -1,0 +1,105 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300&subset=latin,cyrillic);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700&subset=latin,cyrillic);
+
+
+body{
+    font-family: 'Open Sans', sans-serif;
+    margin: 0px 50px;
+}
+
+h1,
+h2,
+h3 {
+    font-family: 'Open Sans Condensed', sans-serif;
+}
+
+h1,h2{
+    text-align: center;
+}
+
+h1 {
+    font-size: 40px;
+}
+
+h2 {
+    font-size: 30px;
+}
+
+h3 {
+    font-size: 25px;
+}
+
+p {
+    text-align: justify;
+}
+
+a {
+    text-decoration: none;
+    color: rgb(0, 138, 184);
+}
+
+a:hover {
+    border-bottom: 1px dotted;
+}
+
+.pros:before,
+.cons:before {
+    content: '';
+    display: block;
+    margin:auto;
+    vertical-align: middle;
+    width: 50px;
+    height: 50px;
+    background-repeat: no-repeat;
+}
+
+.pros:before {
+    background-image: url('../img/pros.png');
+}
+
+.cons:before {
+    background-image: url('../img/cons.png');
+}
+
+dialog {
+    width: 300px;
+    height: 200px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-top: -100px;
+    margin-left: -150px;
+    background-color: rgb(0, 138, 184);
+    border: 2px solid #fff;
+    border-radius: 15px;
+    text-align: center;
+    color:#fff;
+}
+
+dialog p {
+    margin-top: 50px;
+    text-align: center;
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 18px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    outline: none;
+    border-color:transparent;
+    border-radius: 4px;
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 18px;
+    color:#fff;
+    background-color: rgb(39, 155, 97);
+}
+
+.btn:hover {
+    background-color: rgb(39, 120, 97);
+}
+
