@@ -2,37 +2,43 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
-    <link rel="stylesheet" href="popup.css">
+    <title>Верстка всплывающего окна (попап)</title>
+    <link rel="stylesheet" href="main.css">
 </head>
 <body>
 <h1>Верстка всплывающего окна (попап)</h1>
-<p>Верстка всплывающего окна, как минимум, включает себя два следующих шага:</p> <p>1) Создание затемняющего наложения, которое будет находиться позади всплывающего окна и обозначать неактивность остальной части страницы.</p> <p>2) Отображение всплывающего окна в определенном месте на странице.</p></p>
+
+<p>Верстка всплывающего окна, как минимум, включает в себя два следующих этапа:</p> 
+
+<ul>
+    <li>Создание затемняющего наложения, которое будет находиться позади всплывающего окна и обозначать неактивность остальной части страницы.</li>
+    <li>Отображение всплывающего окна в определенном месте на странице.</li>
+</ul>
 
 <p>По заданию необходимо, чтобы окно всегда находилось посередине.
 Исходя из этого рассмотрим несколько способов затемнения части страницы, которая находится позади попапа, а также несколько способов центрирования попапа.</p>
 
 <h2>Способы создания затемняющего наложения</h2>
 <h3>Способ №1. Элемент с position: absolute</h3>
- <p>Данный способо подразумевает создания абсолютно спозиционнированного контейнера, которому задается z-index больше, чем у других элементов страницы, но меньше, чем у всплывающего окна.</p>
+ <p>Данный способ подразумевает создания абсолютно спозиционнированного контейнера, которому задается z-index больше, чем у других элементов страницы, но меньше, чем у всплывающего окна.</p>
 
 <p>Реализация данного примера:</p>
 
 <p data-height="400" data-theme-id="8671" data-slug-hash="LGJBq" data-default-tab="result" data-user="dima716" class='codepen'>See the Pen <a href='http://codepen.io/dima716/pen/LGJBq/'>Creating an Overlay on Element with position:fixed</a> by Dmitry (<a href='http://codepen.io/dima716'>@dima716</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
-<script async src="//codepen.io/assets/embed/ei.js"></script>
 
-<p class="pros">Поддерживается в большинстве современных браузеров, вклчае IE => 8.</p>
-<p class="cons">Необходимо всегда точно знать, что элемент попап абсолютно спозиционирован по отношению к элементу body. Иначе, если попап находится внутри другого контейнера с position:relative, абсолютное позициирование будет применяться к нему, и наложение будет работать неправильно. Чтобы этого избежать, необходимо сделать элемент попап прямым потомком элемента body, либо удостовериться, что ни один из предков элемента попап не имееет position: relative</p>
-<p class="cons">Если контента страницы не достаточно, чтобы элемент body растянулся по высоте до низа viewport, то контейнер с наложением
-,которому задается height: 100% относительно высоты элемента body не растянется по всей высоте viewport, и соответственно затемняться будет не вся страница. Чтобы это исправить, необходимо задать height: 100%, элементу html и элементу body, тогда высота этиъ элементов, а соответственно и высота контейнера с наложением всегда будет равняться высоте viewport.</p>
+
+<p class="pros">Поддерживается в большинстве современных браузеров, включая IE => 8.</p>
+<p class="cons">Необходимо всегда точно знать, что элемент попап абсолютно спозиционирован по отношению к элементу body. Иначе, если попап находится внутри другого контейнера с position:relative, абсолютное позициирование будет применяться к нему, и наложение будет работать неправильно. Чтобы этого избежать, необходимо сделать элемент попап прямым потомком элемента body, либо удостовериться, что ни один из предков элемента попап не имееет position: relative.</p>
+<p class="cons">Если контента страницы недостаточно, чтобы элемент body растянулся по высоте до нижней части viewport, то контейнер с наложением
+,которому задается height: 100% относительно высоты элемента body не растянется по всей высоте viewport, и соответственно затемняться будет не вся страница. Чтобы это исправить, необходимо задать height: 100%, элементу html и элементу body, тогда высота этих элементов, а соответственно и высота контейнера с наложением всегда будет равняться высоте viewport.</p>
 <p>Однако в данном случае, при скролле страницы, наложение не будет распространяться на контент расположенный ниже. Решением в этой ситуации будет задание элементам html и body свойства min-height: 100% и элементу body свойства position:relative. Таким образом контейнер с наложением будет принмать высоту viewport и растягиваться при добавлении контента.</p>
 <p class="cons">Добавляется пустой контейнер в разметку, что нарушает семантичность кода.</p>
 
 <h3>Способ №2. Элемент с position: fixed</h3>
 <p>Данный способ практически не отличается от описанного выше, за исключением того, что контейнеру с наложением задается position:fixed.</p>
 <p>Реализация данного примера:</p>
-<p data-height="399" data-theme-id="8671" data-slug-hash="EKhks" data-default-tab="result" data-user="dima716" class='codepen'>See the Pen <a href='http://codepen.io/dima716/pen/EKhks/'>Creating an Overlay on Element with position:fixed</a> by Dmitry (<a href='http://codepen.io/dima716'>@dima716</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
-<script async src="//codepen.io/assets/embed/ei.js"></script>
+<p data-height="400" data-theme-id="8671" data-slug-hash="EKhks" data-default-tab="result" data-user="dima716" class='codepen'>See the Pen <a href='http://codepen.io/dima716/pen/EKhks/'>Creating an Overlay on Element with position:fixed</a> by Dmitry (<a href='http://codepen.io/dima716'>@dima716</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
+
 
 <p class="pros">Контейнер с наложением в данном случае позиционируется  <b>фиксированно</b> по отношению к viweport, поэтому не важно где в DOM будет находиться данный элемент, он всегда будет позиционирован относительно viweport</p>
 <p class="pros">По этой же причине скролл никак не будет влиять на отоборажение контейнера с наложением, оно всегда будет фиксированно.</p>
@@ -47,7 +53,6 @@
 <p>В данном способе применяются те же css правила, что и в предыдущих способах, но не к контейнеру, а к псевдоэлементам :after и :before элмента body.</p>
 <p>Реализация данного примера:</p>
 <p data-height="400" data-theme-id="8671" data-slug-hash="tzkdD" data-default-tab="result" data-user="dima716" class='codepen'>See the Pen <a href='http://codepen.io/dima716/pen/tzkdD/'>Creating an Overlay with pseudoelement</a> by Dmitry (<a href='http://codepen.io/dima716'>@dima716</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
-<script async src="//codepen.io/assets/embed/ei.js"></script>
 
 <p class="pros">Не нарушается семантичность разметки, т.к. не используется отдельный контейнер.</p>
 
@@ -57,16 +62,16 @@
 
 
 <h3>Способ №4. Применение свойства outline к всплывающему окну</h3>
-<p>В данном способе не создается дополнительных контейнеров для наложения, а задается свойство outline c достаточно большим значением для самого попапа. Значение свойства outline должно быть таким, чтобы покрыывать всю область viewport.</p>
+<p>В данном способе не создается дополнительных контейнеров для наложения, а задается свойство outline c достаточно большим значением для самого попапа. Значение свойства outline должно быть таким, чтобы покрывать всю область viewport.</p>
 
 <p>Реализация данного примера:</p>
 <p data-height="400" data-theme-id="8671" data-slug-hash="nasEi" data-default-tab="result" data-user="dima716" class='codepen'>See the Pen <a href='http://codepen.io/dima716/pen/nasEi/'>Creating an Overlay on Element with position:fixed</a> by Dmitry (<a href='http://codepen.io/dima716'>@dima716</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
-<script async src="//codepen.io/assets/embed/ei.js"></script>
+
 
 <p class="pros">Не нарушается семантичность разметки, т.к. не используется отдельный контейнер.</p>
 
 <p class="cons">
-При применении данного способа, контент, который находится позади всплывающего окна, остается активным, т.е если, например, на какой - либо элемент повешен обработчик события клика, то при нажатии он сработает.
+При применении данного способа, контент, который находится позади всплывающего окна, остается активным, т.е если, например, к какому - либо элементу привязан обработчик события клика, то при нажатии он сработает. 
 </p>
 
 <p class="cons">
@@ -83,7 +88,7 @@
 испольузуется свойство box-shadow</p>
 <p>Реализация данного примера:</p>
 <p data-height="400" data-theme-id="8671" data-slug-hash="kCicH" data-default-tab="result" data-user="dima716" class='codepen'>See the Pen <a href='http://codepen.io/dima716/pen/kCicH/'>Creating an Overlay with box-shadow</a> by Dmitry (<a href='http://codepen.io/dima716'>@dima716</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
-<script async src="//codepen.io/assets/embed/ei.js"></script>
+
 
 <p class="pros">Не нарушается семантичность разметки, т.к. не используется отдельный контейнер.</p>
 
@@ -92,7 +97,7 @@
 </p>
 
 <p class="cons">
-Главный недостаток давного способоа заключается в том, свойство box-shadow в сочетании с другими css правилами, такими как border-radius, могут стать теми уязвимыми местами, которые приводят к потере <a target="_blank" href="http://makandracards.com/makandra/17609-many-box-shadows-will-make-your-app-unusable-on-smartphones-and-tablets">производительности</a> на смартфонах и планшетах. Особенно это становится заметно при применении box-shadow c большим значением к элементам с position:fixed, т.к в этом случае оно заставляет браузер перерисовать большие области страницы при скролле.
+Главный недостаток давного способоа заключается в том, что свойство box-shadow в сочетании с другими css правилами, такими как border-radius, могут стать теми уязвимыми местами, которые приводят к потере <a target="_blank" href="http://makandracards.com/makandra/17609-many-box-shadows-will-make-your-app-unusable-on-smartphones-and-tablets">производительности</a> на смартфонах и планшетах. Особенно это становится заметно при применении box-shadow c большим значением к элементам с position:fixed, т.к в этом случае оно заставляет браузер перерисовывать большие области страницы при скролле.
 </p>
 
 <p class="cons">
@@ -100,7 +105,7 @@
 </p>
 
 <h3>Способ №6. Применение html элемента &lt;dialog&gt;</h3>
-<p>Данный элемент появился достаточно недавно, и к сожалению поддерживается в очень <a href="http://caniuse.com/#search=dialog" target="_blank">ограниченном</a> количествое браузеров.
+<p>Данный элемент появился достаточно недавно, и к сожалению поддерживается в очень <a href="http://caniuse.com/#search=dialog" target="_blank">ограниченном</a> количестве браузеров.
 
 <p>Данный элемент позволяет легко создавать и стилизовать всплывающие окна. Он предоставляет всю небходимую функциональность модальных окон. Данный элемент находится в DOM и может стилизоваться путем применения обычных css правил</p>
 
@@ -139,7 +144,6 @@
 <p>Реализация данного примера:</p>
 
 <p data-height=400 data-theme-id="8671" data-slug-hash="IqyGb" data-default-tab="result" data-user="dima716" class='codepen'>See the Pen <a href='http://codepen.io/dima716/pen/IqyGb/'>Centering an Overlay with transform</a> by Dmitry (<a href='http://codepen.io/dima716'>@dima716</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
-<script async src="//codepen.io/assets/embed/ei.js"></script>
 
 <p class="pros">Для центрирования не требуется знания высоты и ширины попапа. </p>
 <p class="cons">Данное свойство не поддерживается в IE8, в остальных браузерах необходимо использовать вендорные префиксы.</p>
@@ -150,12 +154,11 @@
 который вычисляет текущую высоту и ширину элемента и задает соответствующие отрицательные margin-left и margin-top.</p>
 <p>Реализация данного примера:</p>
 <p data-height="400" data-theme-id="8671" data-slug-hash="uwnAy" data-default-tab="result" data-user="dima716" class='codepen'>See the Pen <a href='http://codepen.io/dima716/pen/uwnAy/'>Centering an Overlay with javascript</a> by Dmitry (<a href='http://codepen.io/dima716'>@dima716</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
-<script async src="//codepen.io/assets/embed/ei.js"></script>
 
 <p class="pros">Как и в предыдущем примере для центрирования не требуется знания высоты и ширины попапа. </p>
 
 <p class="cons">
-Данный способ не работает если у пользователя отключен javascript.
+Данный способ не работает, если у пользователя отключен javascript.
 </p>
 
 <p class="cons">
@@ -163,11 +166,10 @@
 </p>
 
 <h3>Способ №3. Применение свойства vertical-align</h3>
-<p>Данный способ можно применять, если попап помещен в контейнер с наложением. Он заключается в том, что перед центрируемым элементом помещается вспомогательный инлайн-блок before, занимающий всю возможную высоту и центрируемый блок выравнивается по его середине. Выравнивание по горизонтали происходит за счет задания внешнему блоку
-text-align:center</p>
+<p>Данный способ можно применять, если попап помещен в контейнер с наложением. Он заключается в том, что перед центрируемым элементом помещается вспомогательный инлайн-блок before, занимающий всю возможную высоту, и центрируемый блок выравнивается по его середине. Выравнивание по горизонтали происходит за счет задания внешнему блоку
+text-align:center.</p>
 <p>Реализация данного примера:</p>
 <p data-height="400" data-theme-id="8671" data-slug-hash="pBJvr" data-default-tab="result" data-user="dima716" class='codepen'>See the Pen <a href='http://codepen.io/dima716/pen/pBJvr/'>Centering an Overlay with vertical-align and pseudoelement</a> by Dmitry (<a href='http://codepen.io/dima716'>@dima716</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
-<script async src="//codepen.io/assets/embed/ei.js"></script>
 
 <p class="pros">Как и в предыдущем примере для центрирования не требуется знания высоты и ширины попапа.</p>
 
@@ -178,7 +180,7 @@ text-align:center</p>
 </p>
 
 <p class="cons">
-Т.к. попапу задается display:inline-block и он ведет себя как инлайновый элемент, то из-за наличия пробелов он не центрируется ровно по горизонтали. Поэтому необходимо убирать пробелы в html коде или задать отрицательный margin-left попапу.
+Т.к. попапу задается display:inline-block, и он ведет себя как инлайновый элемент, то из-за наличия пробелов он не центрируется ровно по горизонтали. Поэтому необходимо убрать пробелы в html коде или задать отрицательный margin-left попапу.
 </p>
 
 
@@ -197,7 +199,8 @@ margin-left и margin-top. Если нет, то javascript, т.к. transform:tr
 
 
 
+<script async src="//codepen.io/assets/embed/ei.js"></script>
+<script src="main.js"></script>
 
-<script src="popup.js"></script>
 </body>
 </html>
